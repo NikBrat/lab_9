@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STEP.COUNT</title>
+</head>
+<body style="background-color:#ffffff; ">
+<h1>New day, new steps!</h1>
+<form method="POST" action="/create/">
+    <label for="step-number">Amount of steps:</label>
+    <input type="number" id="step-number" name="steps" required aria-required="true">
+    <label for="date-number">Date:</label>
+    <input type="date" id="date-number" name="date" value="2023-04-22">
+    <button type="submit">Add a record</button>
+</form>
+<style>
+    .div-1 {
+        background-color: #3ef007;
+    }
+</style>
+<div>
+    <form method="post" action="/clear">
+        <button type="submit">Clear</button>
+    </form>
+</div>
+
+<div class="div-1">
+    <h2>All your STEPS: {{ sum_of_steps }}</h2>
+</div>
+
+<h3>Recordings</h3>
+{% for record in records %}
+    <div>
+        <p><b>{{ record.date }}</b></p>
+        <p>{{ record.steps }}</p>
+    </div>
+{% endfor %}
+
+
+</body>
+</html>
